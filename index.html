@@ -15,7 +15,12 @@
             <span aria-hidden="true">📷</span> Photoland
         </p>
 
-        <nav class="main-nav" aria-label="Main navigation">
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="visually-hidden">Menu</span>
+        </button>
+
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             <ul>
                 <li><a href="#" aria-current="page">Explore</a></li>
                 <li><a href="#">Popular</a></li>
@@ -57,7 +62,9 @@
                                 <li><a href="#">sunset</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 128 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">128</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 2.4k views</span>
                             </p>
                         </figcaption>
@@ -73,7 +80,9 @@
                                 <li><a href="#">urban</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 342 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">342</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 5.1k views</span>
                             </p>
                         </figcaption>
@@ -89,7 +98,9 @@
                                 <li><a href="#">cute</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 981 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">981</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 12k views</span>
                             </p>
                         </figcaption>
@@ -105,7 +116,9 @@
                                 <li><a href="#">lifestyle</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 76 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">76</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 980 views</span>
                             </p>
                         </figcaption>
@@ -121,7 +134,9 @@
                                 <li><a href="#">travel</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 205 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">205</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 3.3k views</span>
                             </p>
                         </figcaption>
@@ -137,7 +152,9 @@
                                 <li><a href="#">autumn</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 154 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">154</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 1.9k views</span>
                             </p>
                         </figcaption>
@@ -153,7 +170,9 @@
                                 <li><a href="#">travel</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 289 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">289</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 4.0k views</span>
                             </p>
                         </figcaption>
@@ -169,7 +188,9 @@
                                 <li><a href="#">ocean</a></li>
                             </ul>
                             <p class="stats">
-                                <span class="stat"><span aria-hidden="true">❤</span> 412 likes</span>
+                                <button type="button" class="like-btn stat" aria-pressed="false">
+                                    <span aria-hidden="true">❤</span> <span class="like-count">412</span> likes
+                                </button>
                                 <span class="stat"><span aria-hidden="true">👁</span> 6.7k views</span>
                             </p>
                         </figcaption>
@@ -197,6 +218,8 @@
     <footer class="site-footer">
         <p>&copy; <time datetime="2026">2026</time> Photoland &mdash; a class project.</p>
     </footer>
+
+    <script src="script.js" defer></script>
 
 </body>
 </html>

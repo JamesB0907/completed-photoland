@@ -120,6 +120,125 @@ Reference files: `index.html`, `style.css`.
 
 ## Part 2 — Adding JavaScript (DOM methods)
 
-*Added on the `with-javascript` branch — same HTML/CSS as Part 1, plus a
-small `script.js` and a few markup hooks. This section is appended once that
-branch is built.*
+Everything from Part 1 stays the same. We're only adding a `script.js` file,
+a couple of small markup hooks, and a tiny bit of CSS for the new states.
+Link the script right before `</body>` first, with `defer` so it runs after
+the HTML has parsed:
+
+```html
+<script src="script.js" defer></script>
+```
+
+### 1. Like button
+
+Swap the ❤ stat from a plain `<span>` into a `<button>` so it's clickable
+and keyboard-focusable, and give the count its own `<span>` to update later:
+
+```html
+<button type="button" class="like-btn stat" aria-pressed="false">
+    <span aria-hidden="true">❤</span> <span class="like-count">128</span> likes
+</button>
+```
+
+In `script.js`:
+
+```js
+const likeButtons = document.querySelectorAll(".like-btn");
+
+likeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const liked = button.classList.toggle("liked");
+        const countSpan = button.querySelector(".like-count");
+        const currentCount = parseInt(countSpan.textContent, 10);
+
+        countSpan.textContent = liked ? currentCount + 1 : currentCount - 1;
+        button.setAttribute("aria-pressed", liked);
+    });
+});
+```
+
+Walk through each line: `querySelectorAll` grabs every like button at once,
+`forEach` loops over them, `classList.toggle` flips the "liked" state and
+hands back whether it's now on, and `textContent` reads/writes the visible
+number. `aria-pressed` keeps assistive tech in sync with a toggle button —
+mention this is the DOM equivalent of the `:checked` pseudo-class from Part 1.
+
+### 2. Live search filter
+
+The search input and photo cards already exist from Part 1 — no markup
+changes needed, just read what's already on the page:
+
+```js
+const searchInput = document.getElementById("search-input");
+const photoCards = document.querySelectorAll(".photo-card");
+
+searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    photoCards.forEach((card) => {
+        const cardText = card.textContent.toLowerCase();
+        const isMatch = cardText.includes(searchTerm);
+
+        card.style.display = isMatch ? "" : "none";
+    });
+});
+```
+
+Type "pets" or "travel" live and watch cards disappear/reappear. Point out
+`card.textContent` pulls the title, tags, and photographer all at once — no
+need to target each piece individually. Also add a `submit` handler on the
+form to stop it reloading the page, since there's no backend:
+
+```js
+document.querySelector(".search-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+```
+
+### 3. Mobile nav toggle
+
+Add a hamburger button in the header, before the `<nav>`, and give the nav
+an `id` so the button can reference it:
+
+```html
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+    <span aria-hidden="true">☰</span>
+    <span class="visually-hidden">Menu</span>
+</button>
+<nav class="main-nav" id="main-nav" aria-label="Main navigation">
+```
+
+CSS: hide the button on wide screens, and inside the existing `@media
+(max-width: 700px)` block, show it and collapse the nav by default:
+
+```css
+.nav-toggle { display: none; }
+
+@media (max-width: 700px) {
+    .nav-toggle { display: inline-flex; }
+    .main-nav { display: none; width: 100%; }
+    .main-nav.nav-open { display: block; }
+    .main-nav ul { flex-direction: column; }
+}
+```
+
+Then the JS:
+
+```js
+const navToggle = document.querySelector(".nav-toggle");
+const mainNav = document.querySelector(".main-nav");
+
+navToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+});
+```
+
+Shrink the browser window live to show the hamburger appear, then click it.
+
+### 4. Wrap-up checklist
+
+`querySelector`/`querySelectorAll` ✓, `addEventListener` ✓, `classList.toggle`
+✓, `textContent` (read + write) ✓, `setAttribute` ✓, `preventDefault` ✓. Every
+feature reuses the same handful of DOM methods — the point isn't to memorize
+a long API, it's that a small toolkit goes a long way.

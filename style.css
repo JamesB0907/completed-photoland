@@ -1,5 +1,276 @@
-#page-header {
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/* ---------- Custom properties (CSS variables) ---------- */
+:root {
+    --color-primary: #0f6292;
+    --color-secondary: #16c79a;
+    --color-bg: #f4f6f8;
+    --color-card-bg: #ffffff;
+    --color-text: #222222;
+    --color-text-light: #666666;
+
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+
+    --radius: 8px;
+    --font-main: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* ---------- Reset-ish basics ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+/* Visible focus outline for keyboard users, everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* ---------- Accessibility helpers ---------- */
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-secondary);
+    color: #ffffff;
+    padding: var(--spacing-sm) var(--spacing-md);
+    z-index: 10;
+}
+
+.skip-link:focus {
+    left: var(--spacing-sm);
+    top: var(--spacing-sm);
+}
+
+/* ---------- Header (Flexbox) ---------- */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
     font-style: italic;
+    margin: 0;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* :not() to add separators between nav items, but not after the last one */
+.main-nav li:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    padding-right: var(--spacing-md);
+}
+
+.main-nav a {
+    color: #ffffff;
+}
+
+.main-nav a[aria-current="page"] {
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.search-form {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.search-form input {
+    border: none;
+    border-radius: var(--radius);
+    padding: var(--spacing-sm);
+}
+
+.search-form button {
+    border: none;
+    border-radius: var(--radius);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #12a683;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.hero h1 {
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Pseudo-element: decorative underline under the hero text, no extra markup needed */
+.hero p::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: var(--spacing-sm) auto 0;
+    background-color: var(--color-secondary);
+}
+
+/* ---------- Page layout (Grid): gallery + trending sidebar ---------- */
+.page-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+/* ---------- Photo grid (Grid): responsive card layout ---------- */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.photo-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    transition: transform 0.2s ease;
+}
+
+/* Pseudo-class: lift the card on hover */
+.photo-card:hover {
+    transform: translateY(-4px);
+}
+
+.photo-card img {
+    width: 100%;
+    display: block;
+}
+
+.photo-card figcaption {
+    padding: var(--spacing-md);
+}
+
+.photo-card h3 {
+    margin: 0 0 var(--spacing-sm);
+}
+
+/* Pseudo-element: little camera icon before every photo title */
+.photo-card h3::before {
+    content: "📸 ";
+}
+
+.photographer {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+/* Tags (Flexbox) */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tags a,
+.tag-cloud a {
+    background-color: var(--color-bg);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+/* Pseudo-element: add the "#" so it never has to live in the HTML */
+.tags a::before,
+.tag-cloud a::before {
+    content: "#";
+    opacity: 0.6;
+}
+
+/* Stats (Flexbox) */
+.stats {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+/* ---------- Trending sidebar ---------- */
+.trending {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius);
+    padding: var(--spacing-md);
+    align-self: start;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+/* Pseudo-class: alternate tag background so the cloud doesn't look flat */
+.tag-cloud li:nth-child(even) a {
+    background-color: #e4f7f1;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+/* ---------- Small screens: stack the grid layout ---------- */
+@media (max-width: 700px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
 }

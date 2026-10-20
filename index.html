@@ -7,8 +7,196 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="page-header">
-       <span id="header-text">Welcome to Photoland!</span>
-    </h1>
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <p class="logo">
+            <span aria-hidden="true">📷</span> Photoland
+        </p>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="#" aria-current="page">Explore</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Groups</a></li>
+                <li><a href="#">Upload</a></li>
+            </ul>
+        </nav>
+
+        <form class="search-form" role="search">
+            <label for="search-input" class="visually-hidden">Search photos</label>
+            <input type="search" id="search-input" name="q" placeholder="Search photos...">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main id="main-content">
+
+        <section class="hero">
+            <h1 id="page-header">
+                <span id="header-text">Welcome to Photoland!</span>
+            </h1>
+            <p>Share your world, one photo at a time.</p>
+        </section>
+
+        <div class="page-layout">
+
+            <section class="gallery" aria-labelledby="gallery-heading">
+                <h2 id="gallery-heading">Recent Uploads</h2>
+
+                <div class="photo-grid">
+
+                    <figure class="photo-card">
+                        <img src="images/mountain-sunset.svg" alt="Sunset glowing orange behind a mountain range">
+                        <figcaption>
+                            <h3>Mountain Sunset</h3>
+                            <p class="photographer">by <a href="#">AlexRivera</a></p>
+                            <ul class="tags">
+                                <li><a href="#">nature</a></li>
+                                <li><a href="#">sunset</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 128 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 2.4k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/city-lights.svg" alt="City skyline lit up at night">
+                        <figcaption>
+                            <h3>City Lights at Night</h3>
+                            <p class="photographer">by <a href="#">UrbanEye</a></p>
+                            <ul class="tags">
+                                <li><a href="#">travel</a></li>
+                                <li><a href="#">urban</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 342 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 5.1k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/golden-retriever.svg" alt="Golden retriever puppy sitting in the grass">
+                        <figcaption>
+                            <h3>Golden Retriever Puppy</h3>
+                            <p class="photographer">by <a href="#">PetSnaps</a></p>
+                            <ul class="tags">
+                                <li><a href="#">pets</a></li>
+                                <li><a href="#">cute</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 981 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 12k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/morning-coffee.svg" alt="Cup of coffee on a wooden table in morning light">
+                        <figcaption>
+                            <h3>Morning Coffee</h3>
+                            <p class="photographer">by <a href="#">DailyGrind</a></p>
+                            <ul class="tags">
+                                <li><a href="#">food</a></li>
+                                <li><a href="#">lifestyle</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 76 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 980 views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/stone-bridge.svg" alt="Old stone bridge crossing a quiet river">
+                        <figcaption>
+                            <h3>Historic Stone Bridge</h3>
+                            <p class="photographer">by <a href="#">WanderLens</a></p>
+                            <ul class="tags">
+                                <li><a href="#">architecture</a></li>
+                                <li><a href="#">travel</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 205 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 3.3k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/autumn-path.svg" alt="Forest path covered in fallen autumn leaves">
+                        <figcaption>
+                            <h3>Autumn Forest Path</h3>
+                            <p class="photographer">by <a href="#">AlexRivera</a></p>
+                            <ul class="tags">
+                                <li><a href="#">nature</a></li>
+                                <li><a href="#">autumn</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 154 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 1.9k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/street-market.svg" alt="Crowded outdoor street market with stalls">
+                        <figcaption>
+                            <h3>Busy Street Market</h3>
+                            <p class="photographer">by <a href="#">UrbanEye</a></p>
+                            <ul class="tags">
+                                <li><a href="#">street</a></li>
+                                <li><a href="#">travel</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 289 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 4.0k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="photo-card">
+                        <img src="images/ocean-waves.svg" alt="Ocean waves rolling in at dusk">
+                        <figcaption>
+                            <h3>Ocean Waves at Dusk</h3>
+                            <p class="photographer">by <a href="#">WanderLens</a></p>
+                            <ul class="tags">
+                                <li><a href="#">nature</a></li>
+                                <li><a href="#">ocean</a></li>
+                            </ul>
+                            <p class="stats">
+                                <span class="stat"><span aria-hidden="true">❤</span> 412 likes</span>
+                                <span class="stat"><span aria-hidden="true">👁</span> 6.7k views</span>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </section>
+
+            <aside class="trending" aria-labelledby="trending-heading">
+                <h2 id="trending-heading">Trending Tags</h2>
+                <ul class="tag-cloud">
+                    <li><a href="#">travel</a></li>
+                    <li><a href="#">nature</a></li>
+                    <li><a href="#">pets</a></li>
+                    <li><a href="#">urban</a></li>
+                    <li><a href="#">food</a></li>
+                    <li><a href="#">architecture</a></li>
+                </ul>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <time datetime="2026">2026</time> Photoland &mdash; a class project.</p>
+    </footer>
+
 </body>
 </html>
